@@ -1,1 +1,7 @@
-sad
+*.iws
+*.ipr
+log/*
+fileTemplates/*
+build/* 
+.idea/*
+src/main/generated/
