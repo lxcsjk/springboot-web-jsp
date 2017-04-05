@@ -1,0 +1,41 @@
+buildscript {
+  ext {
+    springBootVersion = '1.5.2.RELEASE'
+  }
+  repositories {
+    mavenLocal()
+    maven { url "http://nexus.chachazhan.com/content/groups/public/" }
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
+
+war {
+  baseName = 'springboot-web-jsp'
+  version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  mavenLocal()
+  maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+  mavenCentral()
+}
+
+dependencies {
+  compile('org.springframework.boot:spring-boot-starter-web')
+  compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+  compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.5.11'
+  compile('org.springframework.boot:spring-boot-starter-tomcat')
+
+  testCompile('org.springframework.boot:spring-boot-starter-test')
+}
